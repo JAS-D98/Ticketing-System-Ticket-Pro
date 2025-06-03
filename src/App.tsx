@@ -8,7 +8,11 @@ import TicketForm from './pages/TicketForm';
 import TicketList from './pages/TicketList';
 import KnowledgeBase from './pages/KnowledgeBase';
 import AdminPanel from './pages/AdminPanel';
+import Analytics from './pages/Analytics';
 import Login from './pages/Login';
+import PublicTicketForm from './pages/PublicTicketForm';
+import PricingPage from './pages/PricingPage';
+import LandingPage from './pages/LandingPage';
 import Chatbot from './components/Chatbot';
 
 function App() {
@@ -16,10 +20,12 @@ function App() {
     <AuthProvider>
       <Router>
         <Routes>
+          <Route path="/" element={<LandingPage />} />
+          <Route path="/pricing" element={<PricingPage />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/submit" element={<><Layout><TicketForm /></Layout><Chatbot /></>} />
-          <Route path="/knowledge" element={<><Layout><KnowledgeBase /></Layout><Chatbot /></>} />
-          <Route path="/" element={
+          <Route path="/submit-ticket" element={<><PublicTicketForm /><Chatbot /></>} />
+          <Route path="/knowledge-public" element={<><KnowledgeBase public={true} /><Chatbot /></>} />
+          <Route path="/dashboard" element={
             <ProtectedRoute>
               <Layout>
                 <Dashboard />
@@ -31,6 +37,30 @@ function App() {
             <ProtectedRoute>
               <Layout>
                 <TicketList />
+              </Layout>
+              <Chatbot />
+            </ProtectedRoute>
+          } />
+          <Route path="/submit" element={
+            <ProtectedRoute>
+              <Layout>
+                <TicketForm />
+              </Layout>
+              <Chatbot />
+            </ProtectedRoute>
+          } />
+          <Route path="/knowledge" element={
+            <ProtectedRoute>
+              <Layout>
+                <KnowledgeBase />
+              </Layout>
+              <Chatbot />
+            </ProtectedRoute>
+          } />
+          <Route path="/analytics" element={
+            <ProtectedRoute>
+              <Layout>
+                <Analytics />
               </Layout>
               <Chatbot />
             </ProtectedRoute>
