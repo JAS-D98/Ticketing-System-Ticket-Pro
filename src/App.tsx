@@ -14,6 +14,7 @@ import PublicTicketForm from './pages/PublicTicketForm';
 import PricingPage from './pages/PricingPage';
 import LandingPage from './pages/LandingPage';
 import Chatbot from './components/Chatbot';
+// import UserManagement from './pages/UserManagement';
 
 function App() {
   return (
@@ -65,6 +66,22 @@ function App() {
               <Chatbot />
             </ProtectedRoute>
           } />
+          {/* <Route path="/users" element={
+            <ProtectedRoute>
+              <Layout>
+                <UserManagement />
+              </Layout>
+              <Chatbot />
+            </ProtectedRoute>
+          } />
+          <Route path="/billing" element={
+            <ProtectedRoute>
+              <Layout>
+                <UserManagement />
+              </Layout>
+              <Chatbot />
+            </ProtectedRoute>
+          } /> */}
           <Route path="/admin" element={
             <ProtectedRoute requireAdmin={true}>
               <Layout>
